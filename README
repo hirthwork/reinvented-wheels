@@ -1,3 +1,4 @@
 Reinvented programming wheels
 =============================
 dev-libs/lazy — implementation of lazy evaluating variables.
+dev-libs/traits — implementation of userful traits.
