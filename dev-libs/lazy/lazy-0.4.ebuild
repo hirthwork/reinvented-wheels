@@ -33,7 +33,6 @@ src_test() {
 	eval $(gcc-config -E ${GCC_PROFILE})
 	export LD_LIBRARY_PATH=$(gcc-config -L ${GCC_PROFILE})
 
-	elog "Starting tests"
 	${BJAM} test || die "test failed"
 	elog "All tests passed"
 }
