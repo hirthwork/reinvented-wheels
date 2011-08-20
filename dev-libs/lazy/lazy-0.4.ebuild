@@ -18,7 +18,7 @@ DOCS="AUTHORS COPYING README TODO"
 HASH="ddd3c2d"
 S="${WORKDIR}/analizer-${PN}-${HASH}"
 
-DEPEND=">=sys-devel/gcc-4.7.0[-nocxx]
+DEPEND=">=sys-devel/gcc-4.7.0_alpha[-nocxx]
 	test? ( dev-libs/boost )
 	dev-util/boost-build"
 
