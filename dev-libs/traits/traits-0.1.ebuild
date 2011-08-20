@@ -27,6 +27,12 @@ src_test() {
 	BJAM_DOTTED_VERSION="$(get_version_component_range 1-2 ${BOOST_BUILD_VERSION#dev-util/boost-build-})"
 	BJAM="bjam-$(replace_all_version_separators _ ${BJAM_DOTTED_VERSION})"
 
+	GCC_VERSION="$(best_version sys-devel/gcc)"
+	GCC_VERSION="${GCC_VERSION#sys-devel/gcc-}"
+	GCC_PROFILE="${CHOST}-${GCC_VERSION/_/-}"
+	eval $(gcc-config -E ${GCC_PROFILE})
+	export LD_LIBRARY_PATH=$(gcc-config -L ${GCC_PROFILE})
+
 	elog "Starting tests"
 	${BJAM} test || die "test failed"
 	elog "All tests passed"
