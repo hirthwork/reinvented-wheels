@@ -6,7 +6,7 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="Implementaton of lazy evaluating variables"
+DESCRIPTION="Implementaton of userful traits"
 HOMEPAGE="https://github.com/analizer/${PN}"
 SRC_URI="https://github.com/analizer/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
@@ -15,10 +15,10 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="test"
 DOCS="AUTHORS COPYING README TODO"
-HASH="3c40a9d"
+HASH="73f3943"
 S="${WORKDIR}/analizer-${PN}-${HASH}"
 
-DEPEND=">=sys-devel/gcc-4.5.0[-nocxx]
+DEPEND=">=sys-devel/gcc-4.6.0[-nocxx]
 	test? ( dev-libs/boost )
 	dev-util/boost-build"
 
