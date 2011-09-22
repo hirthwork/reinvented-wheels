@@ -1,4 +1,5 @@
 Reinvented programming wheels
 =============================
+dev-libs/backtrace — backtrace helper library.
 dev-libs/lazy — implementation of lazy evaluating variables.
 dev-libs/traits — implementation of userful traits.
