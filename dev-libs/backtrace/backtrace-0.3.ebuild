@@ -13,7 +13,7 @@ SRC_URI="https://github.com/analizer/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="test debug static-libs"
+IUSE="test static-libs"
 DOCS="AUTHORS COPYING README"
 HASH="ace2a2d"
 S="${WORKDIR}/analizer-${PN}-${HASH}"
@@ -34,22 +34,15 @@ src_compile()
 		LINK="${LINK},static"
 	fi
 
-	if use debug
-	then
-		BUILD_TYPE="debug"
-	else
-		BUILD_TYPE="release"
-	fi
-
-	${BJAM} ${BUILD_TYPE} link=${LINK} || die "build failed"
+	${BJAM} release link=${LINK} || die "build failed"
 }
 
 src_test() {
-	${BJAM} test || die "build failed"
+	${BJAM} release test || die "build failed"
 	elog "All tests passed"
 }
 
 src_install() {
-	${BJAM} dist ${BUILD_TYPE} link=$LINK --prefix=${D}/usr || die "install failed"
+	${BJAM} release dist link=$LINK --prefix=${D}/usr || die "install failed"
 }
 
