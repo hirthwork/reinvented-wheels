@@ -21,6 +21,7 @@ RDEPEND="dev-util/boost-build"
 src_install() {
 	insinto /usr/share/reinvented-wheels
 	doins stlport.jam
+	insinto /usr/share/stlport-jam
 	doins Jamroot
 }
 
