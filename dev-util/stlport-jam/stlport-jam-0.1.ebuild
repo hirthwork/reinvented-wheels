@@ -6,7 +6,7 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="BJam <variant> feature extended with coverage one"
+DESCRIPTION="BJam <stdlib> feature extended with stlport"
 HOMEPAGE="https://github.com/analizer/${PN}"
 SRC_URI="https://github.com/analizer/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
