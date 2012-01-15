@@ -16,7 +16,8 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 S="${WORKDIR}/analizer-${PN}-bca292e"
 
-RDEPEND="dev-util/boost-build"
+RDEPEND="dev-util/boost-build
+app-text/noweb"
 
 src_install() {
 	insinto /usr/share/reinvented-wheels
