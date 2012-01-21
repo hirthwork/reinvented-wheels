@@ -17,7 +17,7 @@ IUSE=""
 S="${WORKDIR}/analizer-${PN}-c877d2d"
 
 RDEPEND="dev-util/boost-build
-dev-libs/STLport"
+	dev-libs/STLport"
 
 src_install() {
 	insinto /usr/share/reinvented-wheels

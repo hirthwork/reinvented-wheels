@@ -17,7 +17,7 @@ IUSE=""
 S="${WORKDIR}/analizer-${PN}-b8dbf94"
 
 RDEPEND="dev-util/boost-build
-app-text/noweb"
+	app-text/noweb"
 
 src_install() {
 	insinto /usr/share/reinvented-wheels
