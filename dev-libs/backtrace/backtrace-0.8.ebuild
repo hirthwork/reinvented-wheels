@@ -57,13 +57,14 @@ src_compile()
 		VARIANT="release"
 	fi
 
-	BJAM="bjam-${BJAM_VERSION} ${VARIANT} link=${LINK} stdlib=${STDLIB}"
+	BJAM="bjam-${BJAM_VERSION}"
+	OPTIONS="${VARIANT} link=${LINK} stdlib=${STDLIB}"
 
-	${BJAM} /backtrace//backtrace || die "build failed"
+	${BJAM} ${OPTIONS} /backtrace//backtrace || die "build failed"
 
 	if use cxx
 	then
-		${BJAM} /backtrace//backtracexx || die "C++ library version build failed"
+		${BJAM} ${OPTIONS} /backtrace//backtracexx || die "C++ library version build failed"
 	fi
 
 	if use doc
@@ -76,18 +77,18 @@ src_compile()
 src_test() {
 	if use doc
 	then
-		${BJAM} basic-test || die "build failed"
+		${BJAM} ${OPTIONS} basic-test || die "build failed"
 	else
-		${BJAM} test || die "build failed"
+		${BJAM} ${OPTIONS} test || die "build failed"
 	fi
 	elog "All tests passed"
 }
 
 src_install() {
-	${BJAM} /backtrace//backtrace-install --prefix=${D}/usr || die "install failed"
+	${BJAM} ${OPTIONS} /backtrace//backtrace-install --prefix=${D}/usr || die "install failed"
 	if use cxx
 	then
-		${BJAM} /backtrace//backtracexx-install --prefix=${D}/usr || die "C++ library version installation failed"
+		${BJAM} ${OPTIONS} /backtrace//backtracexx-install --prefix=${D}/usr || die "C++ library version installation failed"
 	fi
 
 	if use doc
