@@ -22,7 +22,7 @@ REQUIRED_USE="stlport? ( cxx )"
 RDEPEND="stlport? ( dev-util/stlport-jam )"
 
 DEPEND="dev-util/boost-build
-	test? ( dev-lib/boost )
+	test? ( dev-libs/boost )
 	doc? ( dev-util/noweb dev-tex/latexmk )
 	${RDEPEND}"
 

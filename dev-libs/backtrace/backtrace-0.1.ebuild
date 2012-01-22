@@ -6,7 +6,7 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="Implementaton of lazy evaluating variables"
+DESCRIPTION="Library for program backtrace retrieval"
 HOMEPAGE="https://github.com/analizer/${PN}"
 SRC_URI="https://github.com/analizer/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
