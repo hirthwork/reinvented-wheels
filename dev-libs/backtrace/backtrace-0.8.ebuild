@@ -60,17 +60,17 @@ src_compile()
 	BJAM="bjam-${BJAM_VERSION}"
 	OPTIONS="${VARIANT} link=${LINK} stdlib=${STDLIB}"
 
-	${BJAM} ${OPTIONS} /backtrace//backtrace || die "build failed"
+	${BJAM} ${OPTIONS} /${PN}//${PN} || die "build failed"
 
 	if use cxx
 	then
-		${BJAM} ${OPTIONS} /backtrace//backtracexx || die "C++ library version build failed"
+		${BJAM} ${OPTIONS} /${PN}//${PN}xx || die "C++ library version build failed"
 	fi
 
 	if use doc
 	then
 		${BJAM} user-manual-install --prefix=. || die "Failed to generate doc"
-		latexmk -pdf -quiet share/doc/backtrace/user-manual.tex || die "PDF generation failed"
+		latexmk -pdf -quiet share/doc/${PN}/user-manual.tex || die "PDF generation failed"
 	fi
 }
 
@@ -85,16 +85,16 @@ src_test() {
 }
 
 src_install() {
-	${BJAM} ${OPTIONS} /backtrace//backtrace-install --prefix=${D}/usr || die "install failed"
+	${BJAM} ${OPTIONS} /${PN}//${PN}-install --prefix=${D}/usr || die "install failed"
 	if use cxx
 	then
-		${BJAM} ${OPTIONS} /backtrace//backtracexx-install --prefix=${D}/usr || die "C++ library version installation failed"
+		${BJAM} ${OPTIONS} /${PN}//${PN}xx-install --prefix=${D}/usr || die "C++ library version installation failed"
 	fi
 
 	if use doc
 	then
 		${BJAM} user-manual-install --prefix=${D}/usr || die "Failed to install doc"
-		insinto /usr/share/doc/backtrace
+		insinto /usr/share/doc/${PN}
 		doins user-manual.pdf
 	fi
 }

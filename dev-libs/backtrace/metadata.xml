@@ -11,7 +11,7 @@
   <flag name="stlport">Link C++ library with STLport instead of libstdc++</flag>
 </use>
 <longdescription lang="en">
-Backtrace is a library providing API for current program call stack state
+Backtrace is a library which provides API for current program call stack state
 retrieval in handy and painless manner.
 </longdescription>
 </pkgmetadata>
