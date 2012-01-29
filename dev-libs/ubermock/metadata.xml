@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>potapov.d@gmail.com</email>
+  <name>Dmitry Potapov</name>
+  <description>Primary Maintainer</description>
+</maintainer>
+<use>
+  <flag name="stlport">Link C++ library with STLport instead of libstdc++</flag>
+</use>
+<longdescription lang="en">
+UberMock is a library which provides mechanism for mock objects construction.
+</longdescription>
+</pkgmetadata>
