@@ -6,19 +6,20 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="Range containers implementation"
+DESCRIPTION="Implementation of set operations on range containers"
 HOMEPAGE="https://github.com/hirthwork/${PN}"
 SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-S="${WORKDIR}/hirthwork-${PN}-8b2453a"
+S="${WORKDIR}/hirthwork-${PN}-2bd5a96"
 
 src_install() {
-	insinto /usr/include/range
+	insinto /usr/include/raingee
 	doins emptyassert.hpp
 	doins predicates.hpp
 	doins range.hpp
+	doins rangeimpl.hpp
 }
 

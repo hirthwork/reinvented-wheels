@@ -6,7 +6,7 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="boost::enable_if reinvented"
+DESCRIPTION="Range containers implementation"
 HOMEPAGE="https://github.com/hirthwork/${PN}"
 SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
