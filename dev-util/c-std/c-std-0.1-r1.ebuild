@@ -1,4 +1,4 @@
-# Copyright 2011 Dmitry Potapov
+# Copyright 2012 Dmitry Potapov
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -6,19 +6,20 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="Range containers implementation"
+DESCRIPTION="BJam feature for used ISO 9899 version"
 HOMEPAGE="https://github.com/hirthwork/${PN}"
 SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-S="${WORKDIR}/hirthwork-${PN}-8b2453a"
+IUSE=""
+S="${WORKDIR}/hirthwork-${PN}-49e56c5"
+
+RDEPEND="dev-util/boost-build"
 
 src_install() {
-	insinto /usr/include/range
-	doins emptyassert.hpp
-	doins predicates.hpp
-	doins range.hpp
+	insinto /usr/share/reinvented-wheels
+	doins c-std.jam || die "install failed"
 }
 

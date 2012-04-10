@@ -6,19 +6,18 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="Implementaton of lazy evaluating variables"
-HOMEPAGE="https://github.com/analizer/${PN}"
-SRC_URI="https://github.com/analizer/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+DESCRIPTION="Implementaton of userful traits"
+HOMEPAGE="https://github.com/hirthwork/${PN}"
+SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="test"
 DOCS="AUTHORS COPYING README TODO"
-HASH="3c40a9d"
-S="${WORKDIR}/analizer-${PN}-${HASH}"
+S="${WORKDIR}/hirthwork-${PN}-73f3943"
 
-DEPEND=">=sys-devel/gcc-4.5.0[-nocxx]
+DEPEND=">=sys-devel/gcc-4.6.0[-nocxx]
 	test? ( dev-libs/boost )
 	dev-util/boost-build"
 
@@ -27,7 +26,12 @@ src_test() {
 	BJAM_DOTTED_VERSION="$(get_version_component_range 1-2 ${BOOST_BUILD_VERSION#dev-util/boost-build-})"
 	BJAM="bjam-$(replace_all_version_separators _ ${BJAM_DOTTED_VERSION})"
 
-	elog "Starting tests"
+	GCC_VERSION="$(best_version sys-devel/gcc)"
+	GCC_VERSION="${GCC_VERSION#sys-devel/gcc-}"
+	GCC_PROFILE="${CHOST}-${GCC_VERSION/_/-}"
+	eval $(gcc-config -E ${GCC_PROFILE})
+	export LD_LIBRARY_PATH=$(gcc-config -L ${GCC_PROFILE})
+
 	${BJAM} test || die "test failed"
 	elog "All tests passed"
 }

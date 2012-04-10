@@ -6,20 +6,22 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="Implementation of set operations on range containers"
+DESCRIPTION="BJam <variant> feature extended with coverage one"
 HOMEPAGE="https://github.com/hirthwork/${PN}"
 SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-S="${WORKDIR}/hirthwork-${PN}-752b377"
+IUSE=""
+DOCS="AUTHORS COPYING README TODO"
+HASH="e78dabc"
+S="${WORKDIR}/hirthwork-${PN}-${HASH}"
+
+RDEPEND="dev-util/boost-build"
 
 src_install() {
-	insinto /usr/include/raingee
-	doins emptyassert.hpp
-	doins predicates.hpp
-	doins range.hpp
-	doins rangeimpl.hpp
+	insinto /usr/share/reinvented-wheels
+	doins coverage.jam || die "install failed"
 }
 

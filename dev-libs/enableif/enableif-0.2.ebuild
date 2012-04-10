@@ -6,20 +6,17 @@ EAPI=2
 
 inherit versionator
 
-DESCRIPTION="Implementation of set operations on range containers"
+DESCRIPTION="boost::enable_if reinvented"
 HOMEPAGE="https://github.com/hirthwork/${PN}"
 SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-S="${WORKDIR}/hirthwork-${PN}-2bd5a96"
+S="${WORKDIR}/hirthwork-${PN}-df31288"
 
 src_install() {
-	insinto /usr/include/raingee
-	doins emptyassert.hpp
-	doins predicates.hpp
-	doins range.hpp
-	doins rangeimpl.hpp
+	insinto /usr/include/reinvented-wheels
+	doins enableif.hpp || die "install failed"
 }
 

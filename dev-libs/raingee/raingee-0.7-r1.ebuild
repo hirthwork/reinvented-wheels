@@ -13,13 +13,13 @@ SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-S="${WORKDIR}/hirthwork-${PN}-6999b46"
+S="${WORKDIR}/hirthwork-${PN}-752b377"
 
 src_install() {
 	insinto /usr/include/raingee
-	doins emptyassert.hpp
-	doins predicates.hpp
-	doins range.hpp
-	doins rangeimpl.hpp
+	doins emptyassert.hpp || die "install failed"
+	doins predicates.hpp || die "install failed"
+	doins range.hpp || die "install failed"
+	doins rangeimpl.hpp || die "install failed"
 }
 

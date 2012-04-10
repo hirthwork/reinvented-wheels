@@ -6,26 +6,20 @@ EAPI=4
 
 inherit versionator
 
-DESCRIPTION="Mock object construction toolkit"
-HOMEPAGE="https://github.com/analizer/${PN}"
-SRC_URI="https://github.com/analizer/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+DESCRIPTION="Library for program backtrace retrieval"
+HOMEPAGE="https://github.com/hirthwork/${PN}"
+SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="test doc stlport static-libs debug"
+IUSE="test doc stlport static-libs cxx debug"
 DOCS="AUTHORS COPYING README"
-S="${WORKDIR}/analizer-${PN}-c307b2c"
+S="${WORKDIR}/hirthwork-${PN}-0ff2fb0"
 
-RDEPEND="
-	stlport? (
-		dev-util/stlport-jam
-		static-libs? ( dev-libs/backtrace ) )
-	!stlport? (
-		static-libs? ( dev-libs/backtrace[-stlport] ) )
-	!static-libs? ( dev-libs/backtrace )
-	dev-libs/enableif
-	dev-libs/range"
+REQUIRED_USE="stlport? ( cxx )"
+
+RDEPEND="stlport? ( dev-util/stlport-jam )"
 
 DEPEND="dev-util/boost-build
 	test? ( dev-libs/boost )
@@ -68,6 +62,11 @@ src_compile()
 
 	${BJAM} ${OPTIONS} /${PN}//${PN} || die "build failed"
 
+	if use cxx
+	then
+		${BJAM} ${OPTIONS} /${PN}//${PN}xx || die "C++ library version build failed"
+	fi
+
 	if use doc
 	then
 		${BJAM} user-manual-install --prefix=. || die "Failed to generate doc"
@@ -87,12 +86,16 @@ src_test() {
 
 src_install() {
 	${BJAM} ${OPTIONS} /${PN}//${PN}-install --prefix=${D}/usr || die "install failed"
+	if use cxx
+	then
+		${BJAM} ${OPTIONS} /${PN}//${PN}xx-install --prefix=${D}/usr || die "C++ library version installation failed"
+	fi
 
 	if use doc
 	then
 		${BJAM} user-manual-install --prefix=${D}/usr || die "Failed to install doc"
 		insinto /usr/share/doc/${PN}
-		doins user-manual.pdf
+		doins user-manual.pdf || die "user manual installation failed"
 	fi
 }
 
