@@ -19,11 +19,11 @@ RDEPEND=">=dev-libs/enableif-0.3"
 
 src_install() {
 	insinto /usr/include/assert
-	doins abortassert.hpp || die "install failed"
+	doins abort.hpp || die "install failed"
 	doins constexpr.hpp || die "install failed"
-	doins emptyassert.hpp || die "install failed"
+	doins empty.hpp || die "install failed"
 	doins noexcept.hpp || die "install failed"
-	doins nullarypredicates.hpp || die "install failed"
-	doins stdexceptassert.hpp || die "install failed"
+	doins predicates.hpp || die "install failed"
+	doins stdexcept.hpp || die "install failed"
 }
 
