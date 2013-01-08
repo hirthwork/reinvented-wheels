@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hirthwork/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-S="${WORKDIR}/hirthwork-${PN}-3c85e8d"
+S="${WORKDIR}/hirthwork-${PN}-8553dbe"
 
 src_install() {
 	insinto /usr/include/range
